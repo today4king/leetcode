@@ -1,11 +1,7 @@
 from memory_profiler import profile
 
 
-
 class Solution:
-    def indexOf(self,input_s:str,input_c: chr)->int:
-        for i,c in enumerate(input_s):
-            if c == input_c:
 
     def lengthOfLongestSubstring(self, s: str) -> int:
         MaxL = 0
@@ -21,6 +17,7 @@ class Solution:
             if len(ss) > MaxL:
                 MaxL = len(ss)
         return MaxL
+
 
 @profile
 def inspect(s, l):
