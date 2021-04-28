@@ -19,6 +19,7 @@ class Solution:
         return MaxL
 
 
+
 @profile
 def inspect(s, l):
     L = Solution().lengthOfLongestSubstring(s)
