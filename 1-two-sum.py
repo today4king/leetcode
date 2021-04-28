@@ -24,6 +24,17 @@ def inspect(nums, t):
     print(ds)
 
 
+def run(target, nums):
+    l = len(nums)
+    for i, x in enumerate(nums):
+        print(i, x)
+        for j in range(i + 1, l):
+            y = nums[j]
+            print(j, y)
+            if target == x + y:
+                return i, j
+
+
 if __name__ == "__main__":
     inspect([2, 7, 11, 15], 9)
     inspect([3,2,4], 6)
