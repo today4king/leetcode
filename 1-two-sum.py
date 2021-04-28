@@ -1,6 +1,6 @@
-# Copyright 2019 ljmold.cn All rights reserved
-#
-# Authors: Carry Jin <carry@ljmold.cn>
+#  Copyright 2021 jinzhao.me All rights reserved
+#  #
+#  Authors: Carry Jin <today4king@gmail.com>
 
 from memory_profiler import profile
 
