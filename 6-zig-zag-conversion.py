@@ -15,49 +15,16 @@
 # string convert(string s, int numRows);
 
 class Solution:
-    def get_coordinate(self, i, numRows):
-        m = numRows * 2 - 2
-        mod = i % m
-        x = 0
-        if mod > numRows:
-            x = mod - numRows
-
-            y = numRows -x
-
-            x += int(i / m) * (numRows - 1)+1
-        elif mod==0:
-            y = 2
-            x += int(i / m) * (numRows - 1)
-        else:
-            y = mod
-            x += int(i / m) * (numRows - 1) + 1
-
-        return x - 1, y - 1
-
     def convert(self, s: str, numRows: int) -> str:
-        if numRows == 1:
-            return s
-        m = numRows * 2 - 2
-        sl = len(s)
-        columnNum = sl % m % numRows + 1 + int(sl / m) * (numRows - 1)
-        matrix = [[''] * columnNum for i in range(numRows)]
+        if numRows < 2: return s
+        res = ["" for _ in range(numRows)]
+        i, flag = 0, -1
+        for c in s:
+            res[i] += c
+            if i == 0 or i == numRows - 1: flag = -flag
+            i += flag
+        return "".join(res)
 
-        for i, c in enumerate(s):
-            x, y = self.get_coordinate(i + 1, numRows)
-            #print('%d,%d'%(x,y))
-            matrix[y][x] = c
-        ret = ''
-
-        for y in range(numRows):
-            # line=''
-            for x in range(columnNum):
-                ret += matrix[y][x]
-                # if matrix[y][x]=='':
-                #     line+=' '
-                # else:
-                #     line += matrix[y][x]
-            #print(line)
-        return ret
 
 
 if __name__ == "__main__":
