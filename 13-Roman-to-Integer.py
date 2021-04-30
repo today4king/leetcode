@@ -7,12 +7,14 @@ class Solution:
         symbol = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
         numbs = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
         ret = 0
+        j = 0
         for i, n in enumerate(symbol):
-            j=len(s)
-            while j>=0:
-                if symbol[i] in s[j]:
-                    ret+=numbs[i]
-                    j+=len(symbol[i])
+            while j < len(s):
+                if symbol[i] in s[j::] and symbol[i][0] == s[j]:
+                    ret += numbs[i]
+                    j += len(symbol[i])
+                else:
+                    break
         return ret
 
 
@@ -31,7 +33,7 @@ if __name__ == "__main__":
     num = "IX"
     print(num)
     print(solution.romanToInt(num))
-    print(solution.romanToInt(num) ==9 )
+    print(solution.romanToInt(num) == 9)
     print('-------------------------------------')
     num = "LVIII"
     print(num)
@@ -41,5 +43,5 @@ if __name__ == "__main__":
     num = "MCMXCIV"
     print(num)
     print(solution.romanToInt(num))
-    print(solution.romanToInt(num) ==1994 )
+    print(solution.romanToInt(num) == 1994)
     print('-------------------------------------')
