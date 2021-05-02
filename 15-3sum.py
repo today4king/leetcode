@@ -7,9 +7,6 @@ from typing import *
 
 class Solution:
     coodinate_list=None
-    def sort(self, nums,i,j):
-        while j>i:
-
 
     def has_k(self, i, j, k_value, nums):
         while j > i + 1:
@@ -22,13 +19,47 @@ class Solution:
                 j = k
         return -1
 
+
+    def sort(self, nums: List[int], start, end):
+        is_from_right = True
+        i = start
+        j = end
+        pivot = start
+        while j > i:
+            if is_from_right and nums[j] < nums[i]:
+                # swap
+                nums[j] += nums[i]
+                nums[i] = nums[j] - nums[i]
+                nums[j] = nums[j] - nums[i]
+                i += 1
+                is_from_right = False
+                pivot = j
+            if not is_from_right and nums[i] > nums[j]:
+                # swap
+                nums[j] += nums[i]
+                nums[i] = nums[j] - nums[i]
+                nums[j] = nums[j] - nums[i]
+                j -= 1
+                is_from_right = True
+                pivot = i
+            if is_from_right:
+                j -= 1
+            else:
+                i += 1
+        if pivot > 1:
+            nums = self.sort(nums, 0, pivot - 1)
+        if pivot < end - 1:
+            nums = self.sort(nums, pivot + 1, end)
+        return nums
+
+
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums_l = len(nums)
 
         if nums_l < 3:
             return []
-        self.coodinate_list=[x for x in range(len(nums))]
-        sorted_nums = self.sort(nums,0,nums_l-1)
+        self.coodinate_list = [x for x in range(len(nums))]
+        sorted_nums = self.sort(nums, 0, nums_l - 1)
         i = 0
         j = 1
         ret = []
