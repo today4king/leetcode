@@ -36,19 +36,10 @@ class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
         if head is None or head.next is None:
             return head
-        after = head.next
-        head.next = after.next
-        after.next = head
-        head = after
-        after = head.next
-        while after.next is not None and after.next.next is not None:
-            pre=after
-            node = after.next
-            after=node.next
-            pre.next=after
-            node.next=after.next
-            after.next=node
-            after=node
+        next=head.next
+        head.next=self.swapPairs(next.next)
+        next.next=head
+        head=next
         return head
 
 
