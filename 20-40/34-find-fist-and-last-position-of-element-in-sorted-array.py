@@ -28,21 +28,19 @@ class Solution:
                     j = middle
             if nums[middle] >= target and middle > start_i:
                 left_i, left_j = partition(nums, target, start_i, middle - 1)
-                if left_i > 0 and left_i < i:
-                    i = left_i
-                if left_j > 0 and left_j > j:
-                    j = left_j
+                if left_i >= 0:
+                    if i < 0 or left_i < i:
+                        i = left_i
+                if left_j >= 0:
+                    if j < 0 or left_j > j:
+                        j = left_j
             if nums[middle] <= target and middle < end_i:
                 right_i, right_j = partition(nums, target, middle + 1, end_i)
-                if right_i > 0:
-                    if i < 0:
+                if right_i >= 0:
+                    if i < 0 or right_i < i:
                         i = right_i
-                    elif right_i < i:
-                        i = right_i
-                if right_j > 0:
-                    if j < 0:
-                        j = right_j
-                    elif right_j > j:
+                if right_j >= 0:
+                    if j < 0 or right_j > j:
                         j = right_j
 
             return i, j
@@ -57,12 +55,11 @@ class Solution:
 
 solution = Solution()
 
-
-nums = [0,0,1,1,1,2,3,4,4,5,6,7,7,7,8,8,8,8,9,9,10]
+nums = [0, 0, 1, 1, 1, 2, 3, 4, 4, 5, 6, 7, 7, 7, 8, 8, 8, 8, 9, 9, 10]
 target = 4
-#[7,8]
+# [7,8]
 print(solution.searchRange(nums, target))
-nums = [1,2,3]
+nums = [1, 2, 3]
 target = 1
 print(solution.searchRange(nums, target))
 nums = [5, 7, 7, 8, 8, 10]
