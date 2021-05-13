@@ -14,7 +14,7 @@ class TreeNode():
             for i in range(nums[index]):
                 current_i = i + self.val + 1
                 if current_i < len(nums):
-                    if nums[current_i]+current_i>len(nums)-1 or nums[current_i]+current_i>nums[index]+index :
+                    if nums[current_i] + current_i >= len(nums) - 1 or nums[current_i] + current_i > nums[index] + index:
                         self.children.append(TreeNode(nums, current_i, depth + 1, self))
                 else:
                     break
@@ -46,7 +46,7 @@ class Solution:
         root = TreeNode(nums, 0, 0, None)
         n, d = root.minDepth()
         s = ''
-        while  n.parent :
+        while n.parent:
             s += '\t' + str(nums[n.val])
             n = n.parent
         s += '\t' + str(nums[n.val])
@@ -56,7 +56,9 @@ class Solution:
 
 solution = Solution()
 
-nums = [5,9,3,2,1,0,2,3,3,1,0,0]
+nums = [5,6,4,4,6,9,4,4,7,4,4,8,2,6,8,1,5,9,6,5,2,7,9,7,9,6,9,4,1,6,8,8,4,4,2,0,3,8,5]
+print(solution.jump(nums))
+nums = [5, 9, 3, 2, 1, 0, 2, 3, 3, 1, 0, 0]
 print(solution.jump(nums))
 nums = [2, 3, 1, 1, 4]
 print(solution.jump(nums))
@@ -66,8 +68,8 @@ print(solution.jump(nums))
 nums = [2, 2, 0, 1]
 print(solution.jump(nums))
 
-nums = [2,9,6,5,7,0,7,2,7,9,3,2,2,5,7,8,1,6,6,6,3,5,2,2,6,3]
+nums = [2, 9, 6, 5, 7, 0, 7, 2, 7, 9, 3, 2, 2, 5, 7, 8, 1, 6, 6, 6, 3, 5, 2, 2, 6, 3]
 print(solution.jump(nums))
 
-nums = [1,3,2]
+nums = [1, 3, 2]
 print(solution.jump(nums))
