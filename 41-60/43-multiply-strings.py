@@ -5,15 +5,15 @@
 class Solution:
 
     def multiply(self, num1: str, num2: str) -> str:
-        if num1=='0' or num2=='0':
+        if num1 == '0' or num2 == '0':
             return '0'
         len_num1 = len(num1)
         len_num2 = len(num2)
         sum_list = []
         i = len_num2 - 1
         while i >= 0:
-            if num2[i]=='0':
-                i-=1
+            if num2[i] == '0':
+                i -= 1
                 continue
             s = ''
             j = len_num1 - 1
@@ -22,9 +22,9 @@ class Solution:
                 sn = int(num2[i]) * int(num1[j]) + carry
                 s = str(sn % 10) + s
                 carry = sn // 10
-                j-=1
-            if carry>0:
-                s=str(carry)+s
+                j -= 1
+            if carry > 0:
+                s = str(carry) + s
             i_zero = len_num2 - 1 - i
             for z in range(i_zero):
                 s += '0'
@@ -45,9 +45,9 @@ class Solution:
                 s = n_x + n_y + carry
                 sum = str(s % 10) + sum
                 carry = s // 10
-                i+=1
-            if carry>0:
-                sum=str(carry)+sum
+                i += 1
+            if carry > 0:
+                sum = str(carry) + sum
             return sum
 
         i = 0
@@ -55,10 +55,10 @@ class Solution:
         while i < len(sum_list):
             if s is None:
                 s = sum_list[i]
-                i+=1
+                i += 1
                 continue
             s = sum(s, sum_list[i])
-            i+=1
+            i += 1
         return s
 
 
