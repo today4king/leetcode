@@ -23,8 +23,8 @@ class Solution:
 
             if nums[i] == 0 and i < len(nums) - 1 and nums[i + 1] != 0 or i + 1 == len(nums) - 1:
                 j = i
-            if i<j and nums[i] <= j - i :
-                if nums[i]>0:
+            if i < j and nums[i] <= j - i:
+                if nums[i] > 0:
                     nums[i] = 0
                     last_found = True
             if nums[i] > j - i:
@@ -38,7 +38,7 @@ class Solution:
                 is_continue = False
         max_border = 0
         jump = 0
-        last_border=0
+        last_border = 0
         for i, c in enumerate(nums):
             if nums[i] + i > max_border:
                 new_border = nums[i] + i
@@ -53,10 +53,10 @@ class Solution:
 
                 while nums[new_border] == 0:
                     new_border -= 1
-                if new_border>max_border:
-                    max_border=new_border
-            if last_border==0 or i ==last_border:
-                last_border=max_border
+                if new_border > max_border:
+                    max_border = new_border
+            if last_border == 0 or i == last_border:
+                last_border = max_border
                 print(i)
                 jump += 1
 
@@ -80,7 +80,7 @@ print(nums)
 print(solution.jump(nums))
 print(solution.jump(nums) == 3)
 
-nums = [7,0,9,6,9,6,1,7,9,0,1,2,9,0,3]
+nums = [7, 0, 9, 6, 9, 6, 1, 7, 9, 0, 1, 2, 9, 0, 3]
 print(nums)
 print(solution.jump(nums))
 print(solution.jump(nums) == 2)
