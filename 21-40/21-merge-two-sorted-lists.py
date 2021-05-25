@@ -81,7 +81,7 @@ if __name__ == '__main__':
     print(a1)
     print(a2)
     a1 = solution.array2node(a1)
-    a2 = solution.array2node(a2)
+    c
     print(solution.node2array(solution.mergeTwoLists(a1, a2)))
     print('-----------------')
     a1 = []
