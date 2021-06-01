@@ -18,7 +18,6 @@ class Solution:
         pre = None
         while head.next is not None:
             after = head.next
-
             head.next = pre
             pre = head
             if after.next is None:
